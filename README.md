@@ -1,0 +1,3 @@
+# jenkins-image-docker-integration
+Write-up: https://tinyurl.com/y72fchkn
+Here you can have auto testing, as soon as the application is up it will automatically test it. Then if it's running fine it will send a mail for application hosted successful and if failed then it will send mail regarding there is an error in the application. Moreover here the application is hosted on container, hence auto monitoring job is also schedule. If by any fault the container goes out. It will restart that container and your application is up and it's never going to be down. This whole thing is automated end-to-end you only need developer to commit the code. I have even got how to create own image which host jenkins on top of centos.😃✌
