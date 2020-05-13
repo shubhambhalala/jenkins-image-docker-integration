@@ -1,0 +1,27 @@
+if sudo ls /var/lib/jenkins/workspace/job1 *.html
+then
+if sudo docker container ls | grep html
+then
+echo "Alright"
+else
+sudo docker container run -dit -p 5656:80 -v /root/job1:/usr/local/apache2/htdocs/ --name html httpd
+fi
+elif sudo ls /var/lib/jenkins/workspace/job1 *.py
+then
+if sudo docker container ls | grep python
+then
+echo "Alright"
+else
+sudo docker container run -it -v /root/job1:/root/ --name python pythonimage
+fi
+elif sudo ls /var/lib/jenkins/workspace/job1 *.php
+then
+if sudo docker container ls | grep php
+then
+echo "Alright"
+else
+sudo docker container run -dit -p 5657:80 -v /root/job1:/var/www/html/ --name php phpimage
+fi
+else
+echo "We don't recognize this coding language"
+fi

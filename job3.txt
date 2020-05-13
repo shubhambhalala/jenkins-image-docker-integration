@@ -1,0 +1,22 @@
+if sudo ls /var/lib/jenkins/workspace/job1 *.html
+then
+status=$(curl -o /dev/null -s -w "%{http_code}" http://192.168.43.28:5656/intro.html)
+elif sudo ls /var/lib/jenkins/workspace/job1 *.php
+then
+status=$(curl -o /dev/null -s -w "%{http_code}" http://192.168.43.28:5657/index.php)
+elif sudo ls /var/lib/jenkins/workspace/job1 *.py
+then
+status=$(200)
+fi
+
+if [[ $status == 200 ]]
+then
+echo "Ready To Deploy" 
+#sudo python3 -m smtpd -c DebuggingServer -n localhost:1025
+sudo python3 mail1.py
+else
+echo "There is some error"
+#sudo python3 -m smtpd -c DebuggingServer -n localhost:1025
+sudo python3 mail.py
+exit 0
+fi

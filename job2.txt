@@ -1,0 +1,25 @@
+if sudo ls /var/lib/jenkins/workspace/job1 *.html
+then
+if sudo docker container ls -a | grep html
+then
+sudo docker container start html
+else
+sudo docker container run -dit -p 5656:80 -v /root/job1:/usr/local/apache2/htdocs/ --name html httpd
+fi
+elif sudo sudo ls /var/lib/jenkins/workspace/job1 *.py
+then
+if sudo docker container ls -a | grep python
+then
+sudo docker container start python
+else
+sudo docker container run -it -v /root/job1:/root --name python pythonimage
+fi
+elif sudo ls /var/lib/jenkins/workspace/job1 *.php
+then
+if sudo docker container ls -a | grep php
+then
+sudo docker container start php
+else
+sudo docker container run -dit -p 5657:80 -v /root/job1:/var/www/html --name php phpimage
+fi
+fi
